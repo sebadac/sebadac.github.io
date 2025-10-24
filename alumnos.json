@@ -1,0 +1,96 @@
+{
+    "alumnosSantucci": [
+        {
+            "nombre": "Sebastian",
+            "apellido": "D'acunto",
+            "departamento": "Departamento de Desarrollo y Diseño de Dispositivos",
+            "proyecto": "Computadora de Santucci",
+            "foto":"./img/ROBLOXIANO.jfif"
+        },
+        {
+            "nombre": "Mika" ,
+            "apellido": "Villamando",
+            "departamento": "Departamento de Desarrollo y Diseño Web",
+            "proyecto": "Pagina web",
+            "foto":"./img/TATUADOR.jfif"
+
+        },
+        {
+            "nombre": "Reggina" ,
+            "apellido": "Fontana",
+            "departamento": "Departamento de Desarrollo y Diseño Web",
+            "proyecto": "Pagina web",
+            "foto":"./img/CABALLO.jfif"
+        },
+        {
+            "nombre": "Andy" ,
+            "apellido": "Kim",
+            "departamento": "Departamento de Desarrollo y Diseño Web",
+            "proyecto": "Pagina web",
+            "foto":"./img/ASIATICO.jfif"
+        },
+        {
+            "nombre": "Emanuel" ,
+            "apellido": "Alfonsin",
+            "departamento": "Departamento de Marketing",
+            "proyecto": "Cuenta de Instagram",
+            "foto":"./img/Manu.jpg"
+        },
+        {
+            "nombre": "Agustin" ,
+            "apellido": "Cane",
+            "departamento": "Departamento de Marketing",
+            "proyecto": "Publicidad",
+            "foto":"./img/CAMARA.jfif"
+        },
+        {
+            "nombre": "Federico" ,
+            "apellido": "De los Santos",
+            "departamento": "Departamento de Datos y Estadisticas",
+            "proyecto": "Recopilacion de datos y Encuestas",
+            "foto":"./img/fede.jpg"
+        },
+        {
+            "nombre": "Nicolas" ,
+            "apellido": "Almaraz",
+            "departamento": "Departamento de Datos y Estadisticas",
+            "proyecto": "Encuestas y Estadisticas Comunes",
+            "foto":"./img/NICO.jfif"
+        },
+        {
+            "nombre": "Camila" ,
+            "apellido": "Marquez",
+            "departamento": "Departamento de Datos y Estadisticas",
+            "proyecto": "Documentacion",
+            "foto":"./img/ESPAÑOLA.jfif"
+        },
+        {
+            "nombre": "Ezequiel" ,
+            "apellido": "Callejas",
+            "departamento": "Departamento de Desarrollo y Diseño de Dispositivos",
+            "proyecto": "Caja Fuerte",
+            "foto":"./img/SPEED.jfif"
+        },
+        {
+            "nombre": "Stefano" ,
+            "apellido": "Ricciardi",
+            "departamento": "Departamento de Desarrollo y Diseño de Dispositivos",
+            "proyecto": "Caja Fuerte",
+            "foto":"./img/Stefa.jpg"
+        },
+        {
+            "nombre": "Xion" ,
+            "apellido": "Piedrabuena",
+            "departamento": "Departamento de UX/UI",
+            "proyecto": "Documentacion y diseño del Guion",
+            "foto":"./img/PIEDRA.jfif"
+        },
+        {
+            "nombre": "Matias" ,
+            "apellido": "Castaño",
+            "departamento": "Departamento de UX/UI",
+            "proyecto": "Caja Fuerte, Documentacion",
+            "foto":"./img/SIGMA.jfif"
+        }
+    ]
+}

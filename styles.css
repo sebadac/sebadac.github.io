@@ -1,0 +1,725 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Bungee+Inline&display=swap');
+
+/* ======= RESET ======= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+  }
+  
+  body {
+    font-family: 'Roboto Condensed', sans-serif;
+    background: #111;
+    color: #f2f2f2;
+    line-height: 1.6;
+    width: 100%;
+    
+}
+  
+  /* ======= HEADER ======= */
+  .header-santucci {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 2rem;
+    background: #000;
+    border-bottom: 4px solid #ff3333; /* tu cinta azul */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    position: relative;
+    height: 100%;
+  }
+  
+  
+/* igualar alto del título y alinear la primera fila de fotos */
+.departamentos { align-items: stretch; }
+
+.departamento {
+  display: flex;
+  flex-direction: column;
+}
+
+.miembros { margin-top: 0; }
+
+.departamento h2{
+  line-height: 1;
+  /* ajustá este valor hasta que todas las primeras fotos queden a la misma altura */
+  min-height: 5rem; 
+  display: flex;
+  align-items: center;   /* centra verticalmente el texto dentro del bloque fijo */
+  text-align: center;
+}
+
+/* ===== Menú en DESKTOP ===== */
+.menu {
+  display: flex;
+}
+
+.menu ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.menu a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.3s;
+}
+
+.menu a:hover {
+  color: #FFD700;
+}
+
+/* ===== Hamburguesa ===== */
+.menu-hamburguesa {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  margin-left: 220px;
+}
+
+.menu-hamburguesa span {
+  width: 25px;
+  height: 3px;
+  background: rgb(255, 217, 0);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* ===== Responsive (solo en móviles) ===== */
+/* ===== Responsive (solo en móviles) ===== */
+@media (max-width: 768px) {
+  .menu-hamburguesa {
+    display: flex;
+  }
+
+  .menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #000;
+    width: 200px;
+    padding: 0; /* se animará junto con el alto */
+    border-radius: 0 0 10px 10px;
+    flex-direction: column;
+    z-index: 3;
+    /* Animación de despliegue tipo cortina */
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.4s ease, padding 0.3s ease;
+  }
+
+  .menu ul {
+    flex-direction: column;
+    z-index: 3;
+    gap: 1rem;
+    padding: 1rem; /* lo metemos dentro para que aparezca con la animación */
+  }
+
+  .menu a {
+    padding: 0.1rem 0;
+    border-bottom: 1px solid rgba(51, 51, 51, 0.247);
+    display: block;
+    
+  }
+
+  .menu a:last-child {
+    border-bottom: none;
+  }
+
+  /* Activo: menú visible con animación */
+  .menu.active {
+    max-height: 500px; /* lo suficiente para cubrir todos los links */
+    opacity: 0.9;
+    
+  }
+
+}
+
+  
+  
+  .logo {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 3px;
+  }
+  
+  .menu ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    
+  }
+  
+  .menu a {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  .menu a:hover {
+    color: #0066ff; /* rojo policía */
+  }
+  
+  .menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 3px;
+    background: #0066ff; /* azul sirena */
+    transition: width 0.3s ease;
+  }
+  
+  .menu a:hover::after {
+    width: 100%;
+  }
+  
+  /* ======= QUIÉNES SOMOS ======= */
+  /*.quienes-santucci {
+    background: repeating-linear-gradient(
+        45deg,
+        #1a1a1a,  
+        #1a1a1a 20px,
+        #665c00 20px,  
+        #665c00 40px
+      );
+      padding: 4rem 2rem;
+  }*/
+
+  /* .quienes-santucci {
+    background-image: url(./img/dos.jpg);
+    background-repeat: no-repeat;
+    background-size: 1400px;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 4rem 2rem;
+  } */
+
+  .quienes-santucci {
+    background-image: url(./img/police.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;       /* que cubra toda la pantalla */
+    background-position: center;  /* siempre centrada */
+    background-attachment: scroll; /* fijo causa problemas en mobile */
+    padding: 4rem 2rem;
+    padding-top: 9.1rem;
+    padding-bottom: 9.1rem;
+  }
+
+  
+
+  .quienes-santucci .contenedor {
+    background: rgba(0,0,0,0.85);
+    max-width: 800px;
+    margin: auto;
+    padding: 2rem;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Barra izquierda */
+  .quienes-santucci .contenedor::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    animation: patrullero-izq 5s infinite;
+  }
+  
+  /* Barra derecha */
+  .quienes-santucci .contenedor::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 6px;
+    height: 100%;
+    animation: patrullero-der 5s infinite;
+  }
+  
+  /* Animación barra izquierda */
+  @keyframes patrullero-izq {
+    0%  { background: #222; box-shadow: none; }                /* se apaga */
+    25%   { background: #ff0000; box-shadow: 0 0 20px #ff0000; } /* rojo brilla */
+    50%  { background: #222; box-shadow: none; }                /* se apaga */
+    75% { background: #0066ff; box-shadow: 0 0 20px #0066ff; } /* azul brilla */
+    100%  { background: #222; box-shadow: none; }                /* se apaga */
+  }
+  
+  /* Animación barra derecha */
+  @keyframes patrullero-der {
+    0%  { background: #222; box-shadow: none; }                /* se apaga */
+    25%   { background: #0066ff; box-shadow: 0 0 20px #0066ff; } /* azul brilla */
+    50%  { background: #222; box-shadow: none; }                /* se apaga */
+    75% { background: #ff0000; box-shadow: 0 0 20px #ff0000; } /* rojo brilla */
+    100%  { background: #222; box-shadow: none; }                /* se apaga */
+  }
+  
+  
+  
+  
+  
+  .quienes-santucci h1 {
+    font-family: "Black Ops One", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #ff0000; /* rojo base */
+  
+    /* Contorno azul */
+    text-shadow: 
+      -1px -1px 0 #0044ff,
+       1px -1px 0 #0044ff,
+      -1px  1px 0 #0044ff,
+       1px  1px 0 #0044ff,
+       0 0 10px #ff0000,   /* glow rojo */
+       0 0 20px #0044ff;   /* glow azul */
+    
+    /* Animación de patrullero */
+    animation: luces-policia 1.8s infinite alternate;
+  }
+  
+  @keyframes luces-policia {
+    0% {
+      text-shadow: 
+        -1px -1px 0 #0044ff,
+         1px -1px 0 #0044ff,
+        -1px  1px 0 #0044ff,
+         1px  1px 0 #0044ff,
+         0 0 15px #ff0000,
+         0 0 30px #0044ff;
+      color: #ffffff; /* rojo encendido */
+    }
+    50% {
+      text-shadow: 
+        -1px -1px 0 #ff0000,
+         1px -1px 0 #ff0000,
+        -1px  1px 0 #ff0000,
+         1px  1px 0 #ff0000,
+         0 0 15px #0044ff,
+         0 0 30px #ff0000;
+      color: #fafafa; /* azul encendido */
+    }
+    100% {
+      text-shadow: 
+        -1px -1px 0 #0044ff,
+         1px -1px 0 #0044ff,
+        -1px  1px 0 #0044ff,
+         1px  1px 0 #0044ff,
+         0 0 15px #ff0000,
+         0 0 30px #0044ff;
+      color: #ffffff;
+    }
+  }
+  
+  
+  .quienes-santucci p {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    text-align: justify;
+  }
+  
+
+  /* ======= FOOTER ======= */
+  .footer-santucci {
+    background: #000;
+    border-top: 4px solid #ff0000; /* línea amarilla tipo cinta policial */
+    padding: 1rem 2rem;
+    text-align: center;
+    color: #ccc;
+    font-size: 0.9rem;
+
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.7);
+  }
+  
+  .footer-santucci p {
+    margin: 0.3rem 0;
+    font-family: 'Roboto Condensed', sans-serif;
+  }
+  
+  .footer-santucci p:first-child {
+    font-weight: bold;
+    color: #9c0000;
+  }
+  
+
+.nombreDept{
+  font-size:20px;
+}
+
+  /* ===== EQUIPO ===== */
+.equipo {
+  max-width: 1400px;
+  margin: auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.equipo h1 {
+  font-size: 2.5rem;
+  color: #f72904;
+  margin-bottom: 2rem;
+  font-family: "Rubik Dirt", system-ui;
+  font-style: normal;
+  font-weight: 400;
+}
+
+/* PC: grid normal */
+.departamentos {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+}
+
+.departamento {
+  background: rgba(0,0,0,0.9);
+  border-radius: 12px;
+  padding: 2rem 1rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(255,255,0,0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Borde cinta policial */
+.departamento::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 6px;
+  background: repeating-linear-gradient(
+    45deg,
+    #beb02b,
+    #FFD700 12px,
+    #000 12px,
+    #000 24px
+  );
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.departamento h2 {
+  margin-bottom: 1em;
+  font-family: "Rubik Glitch", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  color: #2433ff;
+  z-index: 2;
+}
+
+.miembros {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 1;
+}
+
+.tarjeta {
+  background: rgba(3, 3, 3, 0.877);
+  padding: 1rem;
+  border-radius: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin-right: 5px;
+}
+
+.tarjeta:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 15px rgba(255,255,255,0.4);
+}
+
+.tarjeta img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+  border: 2px solid #fff;
+}
+
+.tarjeta p {
+  margin: 0;
+  font-size: 1rem;
+  color: rgb(196, 12, 12);
+  font-family: "Rubik Dirt", system-ui;
+  font-style: normal;
+  font-weight: 400;
+}
+
+/* ===== SOLO EN CELULAR ===== */
+@media (max-width: 768px) {
+  .departamentos {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .departamento {
+    align-items: stretch;
+  }
+
+  .miembros {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;       /* activa scroll horizontal */
+    scroll-snap-type: x mandatory; /* efecto “paginado” */
+    gap: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .tarjeta {
+    flex: 0 0 50%;  /* cada tarjeta ocupa ~70% del ancho */
+    scroll-snap-align: start;
+    text-align: center;
+  }
+
+  /* Scrollbar visible (opcional) */
+  .miembros::-webkit-scrollbar {
+    height: 8px;
+  }
+  .miembros::-webkit-scrollbar-track {
+    background: #111;
+    border-radius: 3px;
+  }
+  .miembros::-webkit-scrollbar-thumb {
+    background: #FFD700;
+    border-radius: 4px;
+  }
+}
+
+
+
+
+/* .menu-hamburguesa {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.menu-hamburguesa span {
+  width: 25px;
+  height: 3px;
+  background: rgb(214, 182, 41);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}*/
+
+/* Responsive */
+/* @media (max-width: 768px) {
+  .menu ul {
+    flex-direction: column;
+    gap: 1rem;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.95);
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .menu ul.activo {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .menu-hamburguesa {
+    display: flex;
+  }
+
+} */
+
+/* ======= CONTENIDO HISTORIA ======= */
+.historia-contenido {
+  display: flex;
+  justify-content: center;   /* centrar horizontalmente */
+  align-items: flex-start;   /* empieza desde arriba */
+  padding: 1rem;
+  margin-left: 15%;
+  width: 70%;
+}
+
+.informe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Ajuste para celulares */
+@media (max-width: 768px) {
+  .historia-contenido {
+    margin-left: 0;
+    width: 100%;
+    padding: 0.5rem; /* un poco de aire para que no pegue al borde */
+  }
+}
+
+/* ======== FORM ESCAPE ROOM (scope: main#inscripcion) ======== */
+/* No tocamos tu body/header/menu. Solo el formulario. */
+
+main#inscripcion {
+  width: min(720px, 92vw);
+  margin: 40px auto;
+  background: #171923;               /* card */
+  border: 1px solid #23263a;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  padding: 28px;
+}
+
+main#inscripcion h1 {
+  margin: 0 0 6px;
+  font-weight: 800;
+  font-size: clamp(22px, 2.2vw, 28px);
+}
+
+main#inscripcion .sub {
+  margin: 0 0 18px;
+  color: #9aa0a6;
+  font-size: 14px;
+}
+
+/* Layout del form */
+main#inscripcion form#formInscripcion {
+  display: grid;
+  gap: 14px;
+}
+
+main#inscripcion .row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+main#inscripcion label {
+  display: block;
+  font-size: 14px;
+  margin: 0 0 6px;
+  color: #c3cad7;
+}
+
+main#inscripcion input,
+main#inscripcion select,
+main#inscripcion button {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #2a2f45;
+  background: #0f1220;
+  color: #f2f2f2;
+  font-size: 15px;
+}
+
+main#inscripcion input::placeholder {
+  color: #6b7280;
+}
+
+main#inscripcion .help {
+  font-size: 12px;
+  color: #9aa0a6;
+  margin-top: 4px;
+}
+
+/* Botón */
+main#inscripcion #btnEnviar {
+  background: #7aa2f7;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .04s ease, opacity .2s ease;
+}
+
+main#inscripcion #btnEnviar:hover {
+  transform: translateY(-1px);
+}
+
+main#inscripcion #btnEnviar:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+/* Estado / mensajes */
+main#inscripcion #status {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+main#inscripcion .ok  { color: #10b981; }
+main#inscripcion .err { color: #ef4444; }
+
+/* Asterisco de requerido */
+main#inscripcion .req::after {
+  content: " *";
+  color: #ef4444;
+}
+
+/* Footer interno del card */
+main#inscripcion footer {
+  margin-top: 14px;
+  color: #9aa0a6;
+  font-size: 12px;
+}
+
+/* Responsive del form */
+@media (max-width: 640px) {
+  main#inscripcion .row { grid-template-columns: 1fr; }
+}
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1; /* ocupa todo el espacio disponible */
+}
+
+footer {
+  margin-top: auto; /* empuja al fondo */
+}
+
+@media (max-width: 768px) {
+  body {
+    background-size: 100% 100%; /* fuerza a ocupar ancho y alto */
+    background-repeat: no-repeat;
+  }
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Santucci Escape Room</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+  <!-- ======= HEADER ======= -->
+  <header class="header-santucci">
+    <div class="logo">SANTUCCI</div>
+
+    <nav class="menu">
+      <ul>
+        <li><a href="index.html">Quiénes somos</a></li>
+        <li><a href="historia.html">Historia</a></li>
+        <li><a href="equipo.html" class="activo">Equipo</a></li>
+        <li><a href="acertijos.html">Inscripcion</a></li>
+      </ul>
+    </nav>
+
+    <div class="menu-hamburguesa" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+  </header>
+
+  <main class="card" id="inscripcion">
+    <h1>Inscripción – Escape Room</h1>
+    <p class="sub">Completá tus datos y elegí fecha y sala. Al enviar, quedará registrado en la planilla.</p>
+    
+    
+    <form id="formInscripcion" novalidate>
+    <div class="row">
+    <div>
+    <label class="req" for="nombre">Nombre</label>
+    <input id="nombre" name="nombre" type="text" placeholder="Seba" autocomplete="given-name" required />
+    </div>
+    <div>
+    <label class="req" for="apellido">Apellido</label>
+    <input id="apellido" name="apellido" type="text" placeholder="Pérez" autocomplete="family-name" required />
+    </div>
+    </div>
+    
+    
+    <div class="row">
+      <div>
+        <label class="req" for="curso">Curso</label>
+        <select id="curso" name="curso" required>
+          <option value="" selected disabled>Elegí tu curso…</option>
+          <option value="1A">1A</option>
+          <option value="1B">1B</option>
+          <option value="1C">1C</option>
+          <option value="2A">2A</option>
+          <option value="2B">2B</option>
+          <option value="2C">2C</option>
+          <option value="3A">3A</option>
+          <option value="3B">3B</option>
+          <option value="3C">3C</option>
+          <option value="4A">4A</option>
+          <option value="4B">4B</option>
+          <option value="4C">4C</option>
+          <option value="5A">5A</option>
+          <option value="5B">5B</option>
+          <option value="5C">5C</option>
+        </select>
+      </div>
+      <div>
+        <label class="req" for="escapeRoom">Escape Room</label>
+        <select id="escapeRoom" name="escapeRoom" required>
+          <option value="" selected disabled>Elegí una sala…</option>
+          <option value="Santucci">Santucci</option>
+          <option value="Macuca">Macuca</option>
+        </select>
+      </div>
+      
+    </div>
+    
+    
+    <div class="row">
+    <div>
+    <label class="req" for="fecha">Fecha</label>
+    <select id="fecha" name="fecha" required>
+    <option value="" selected disabled>Elegí fecha…</option>
+    <option value="placeholder1">placeholder1</option>
+    <option value="placeholder2">placeholder2</option>
+    </select>
+    </div>
+    <div>
+    <label for="obs">Observaciones (opcional)</label>
+    <input id="obs" name="obs" type="text" placeholder="Aclaraciones (si corresponde)" />
+    </div>
+    </div>
+    
+    
+    <button id="btnEnviar" type="submit">Enviar inscripción</button>
+    <div id="status" class="status" aria-live="polite"></div>
+    </form>
+    
+    
+    <footer>Privacidad: solo usamos los datos para gestionar la inscripción.</footer>
+    </main>
+  <script src="script.js"></script>
+</body>  
