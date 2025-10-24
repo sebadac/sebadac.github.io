@@ -3,7 +3,7 @@
 
   // === CONFIG ===
   // Apps Script Web App URL (Deployment: Execute as "Me", Access "Anyone")
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyd_OxiutusEN_SyMn2nG_tOQBicWaZtIgTKoZqiTKdipjNOIyV532OPlx4N1iavLtt/exec';
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzW47IfTSy0RJ69c8p4TXmGiiCTxEDKn3QWjopOQYgtbNwU-KzA15jBxIjtxQqzcWQ6/exec';
   const MY_SITE = 'https://sebadac.github.io'; // optional
 
   // === DOM UTIL ===
@@ -162,5 +162,6 @@
     if (formEl) formEl.addEventListener('submit', handleSubmit);
   });
 })();
+
 
 
