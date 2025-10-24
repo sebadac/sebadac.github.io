@@ -1,155 +1,180 @@
+(function () {
+  'use strict';
 
-// script.js
-async function main() {
-  const cont = document.querySelector(".departamentos");
-  if (!cont) return;
+  // === CONFIG ===
+  // Reemplazá con la URL de tu Web App (Google Apps Script) desplegado como "Execute as: Me".
+  // Ej: "https://script.google.com/macros/s/AKfycbx.../exec"
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz1tdHOBTYFa7_PRuRHHwGLidekEyBrDNNCqIlBt33lGzOTwNjiTDyGhOPjq-Vp1omr/exec';
 
-  // Leer JSON
-  const data = await fetch("alumnos.json").then(r => r.json());
-  const alumnos = data.alumnosSantucci || [];
+  // (Opcional) tu dominio de GitHub Pages — usado para diagnósticos y rutas absolutas si lo necesitás.
+  const MY_SITE = 'https://sebadac.github.io';
 
-  // Agrupar por departamento
-  const porDept = alumnos.reduce((acc, a) => {
-    (acc[a.departamento] ||= []).push(a);
-    return acc;
-  }, {});
+  // ======= DOM UTIL =======
+  function qs(sel, root = document) { return root.querySelector(sel); }
+  function qsa(sel, root = document) { return Array.from(root.querySelectorAll(sel)); }
 
-  cont.innerHTML = "";
-  Object.entries(porDept).forEach(([dept, miembros]) => {
-    const d = document.createElement("div");
-    d.className = "departamento";
+  function showStatus(el, msg, type) {
+    if (!el) return console.log('status:', msg);
+    el.textContent = msg;
+    el.className = 'status' + (type ? ' ' + type : '');
+  }
 
-    const h2 = document.createElement("h2");
-    h2.textContent = dept;
-    h2.className = "nombreDept";
-    d.appendChild(h2);
+  // ======= MAIN: cargar tarjetas de alumnos =======
+  async function main() {
+    const cont = qs('.departamentos');
+    if (!cont) return;
 
-    const list = document.createElement("div");
-    list.className = "miembros";
+    try {
+      // fetch relativo funcionará correctamente en GitHub Pages (root del sitio cuando repo = username.github.io)
+      const url = new URL('alumnos.json', location.origin).href; // ejemplo: https://sebadac.github.io/alumnos.json
+      const res = await fetch(url);
+      if (!res.ok) throw new Error('No se pudo cargar alumnos.json: ' + res.status);
+      const data = await res.json();
+      const alumnos = data.alumnosSantucci || [];
 
-    miembros.forEach(m => {
-      const full = `${m.nombre} ${m.apellido}`;
-      const card = document.createElement("div");
-      card.className = "tarjeta";
+      const porDept = alumnos.reduce((acc, a) => { (acc[a.departamento] ||= []).push(a); return acc; }, {});
 
-      const img = document.createElement("img");
-      img.alt = full;
-      img.src = m.foto || "./img/placeholder.jpg";
+      cont.innerHTML = '';
+      Object.entries(porDept).forEach(([dept, miembros]) => {
+        const d = document.createElement('div'); d.className = 'departamento';
 
-      const p = document.createElement("p");
-      p.textContent = m.nombre;
+        const h2 = document.createElement('h2'); h2.textContent = dept; h2.className = 'nombreDept'; d.appendChild(h2);
 
-      card.appendChild(img);
-      card.appendChild(p);
-      list.appendChild(card);
+        const list = document.createElement('div'); list.className = 'miembros';
+
+        miembros.forEach(m => {
+          const full = `${m.nombre} ${m.apellido}`;
+          const card = document.createElement('div'); card.className = 'tarjeta';
+
+          const img = document.createElement('img'); img.alt = full; img.src = m.foto || './img/placeholder.jpg';
+          const p = document.createElement('p'); p.textContent = m.nombre;
+
+          card.appendChild(img); card.appendChild(p); list.appendChild(card);
+        });
+
+        d.appendChild(list); cont.appendChild(d);
+      });
+
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  // ====== UTIL visual ======
+  function equalizeDeptTitles() {
+    const hs = qsa('.departamento h2');
+    if (!hs.length) return;
+    hs.forEach(h => (h.style.height = 'auto'));
+    const max = Math.max(...hs.map(h => h.offsetHeight || 0));
+    hs.forEach(h => (h.style.height = `${max}px`));
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    main().then(() => {
+      equalizeDeptTitles();
+      window.addEventListener('resize', equalizeDeptTitles);
     });
-
-    d.appendChild(list);
-    cont.appendChild(d);
   });
-}
 
-function equalizeDeptTitles() {
-  const hs = Array.from(document.querySelectorAll('.departamento h2'));
-  hs.forEach(h => (h.style.height = 'auto'));              // reset
-  const max = Math.max(...hs.map(h => h.offsetHeight));    // alto mayor
-  hs.forEach(h => (h.style.height = `${max}px`));          // fijar todos
-}
+  // ===== MENU =====
+  window.toggleMenu = function () { qs('.menu')?.classList.toggle('active'); };
 
-// llama después de crear las tarjetas
-document.addEventListener('DOMContentLoaded', () => {
-  main().then(() => {
-    equalizeDeptTitles();
-    window.addEventListener('resize', equalizeDeptTitles);
-  });
-});
+  // ===== Inscripción: manejo del form =====
+  const form = qs('#formInscripcion');
+  const btn = qs('#btnEnviar');
+  const out = qs('#status');
 
-
-function toggleMenu() {
-  document.querySelector(".menu")?.classList.toggle("active");
-}
-
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxdRkvBmMOtodKXwbJd0Bb2jJuN9OnLwdOf-jKnMldB2zpTNJ1pdRAjd1uzqGPihOsV/exec"; // TODO
-
-const form = document.getElementById('formInscripcion');
-const btn  = document.getElementById('btnEnviar');
-const out  = document.getElementById('status');
-
-function validate(form){
-  // Lecturas robustas por si algún name/id cambió
-  const nombre      = (form.nombre?.value ?? form.elements['nombre']?.value ?? '').trim();
-  const apellido    = (form.apellido?.value ?? form.elements['apellido']?.value ?? '').trim();
-  const curso       = (form.curso?.value ?? form.elements['curso']?.value ?? '').trim();
-  const escapeRoom  = (form.escapeRoom?.value ?? form.elements['escapeRoom']?.value ?? document.querySelector('#escapeRoom')?.value ?? '').trim();
-  const fecha       = (form.fecha?.value ?? form.elements['fecha']?.value ?? '').trim();
-
-  if (!nombre || !apellido || !curso || !escapeRoom || !fecha) {
-    out.textContent = 'Completá todos los campos obligatorios.';
-    out.className = 'status err';
-    return false;
+  function readField(form, name) {
+    return (form[name]?.value ?? form.elements[name]?.value ?? '').trim();
   }
-  return true;
-}
 
-form.addEventListener('submit', async (e)=>{
-  e.preventDefault();
-  if(!validate(form)) return;
+  function validate(formEl) {
+    if (!formEl) return false;
+    const nombre = readField(formEl, 'nombre');
+    const apellido = readField(formEl, 'apellido');
+    const curso = readField(formEl, 'curso');
+    const escapeRoom = readField(formEl, 'escapeRoom') || qs('#escapeRoom')?.value || '';
+    const fecha = readField(formEl, 'fecha');
 
-  // Ensamblar valores con la misma lectura robusta
-  const nombre      = (form.nombre?.value ?? form.elements['nombre']?.value ?? '').trim();
-  const apellido    = (form.apellido?.value ?? form.elements['apellido']?.value ?? '').trim();
-  const curso       = (form.curso?.value ?? form.elements['curso']?.value ?? '').trim();
-  const escapeRoom  = (form.escapeRoom?.value ?? form.elements['escapeRoom']?.value ?? document.querySelector('#escapeRoom')?.value ?? '').trim();
-  const fecha       = (form.fecha?.value ?? form.elements['fecha']?.value ?? '').trim();
-  const observaciones = (form.obs?.value ?? form.elements['obs']?.value ?? '').trim();
+    if (!nombre || !apellido || !curso || !escapeRoom || !fecha) {
+      showStatus(out, 'Completá todos los campos obligatorios.', 'err');
+      return false;
+    }
+    return true;
+  }
 
-  // Enviar como x-www-form-urlencoded (evita preflight CORS)
-  const params = new URLSearchParams({
-    nombre, apellido, curso, escapeRoom, fecha, observaciones
-  });
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!validate(form)) return;
 
-  // DEBUG opcional en consola
-  console.log('Payload a enviar:', Object.fromEntries(params));
+      const nombre = readField(form, 'nombre');
+      const apellido = readField(form, 'apellido');
+      const curso = readField(form, 'curso');
+      const escapeRoom = readField(form, 'escapeRoom') || qs('#escapeRoom')?.value || '';
+      const fecha = readField(form, 'fecha');
+      const observaciones = readField(form, 'obs') || readField(form, 'observaciones') || '';
 
-  btn.disabled = true;
-  out.textContent = 'Enviando…';
-  out.className = 'status';
+      const params = new URLSearchParams({ nombre, apellido, curso, escapeRoom, fecha, observaciones });
 
-  try{
-    const res = await fetch(SCRIPT_URL, { method: 'POST', body: params });
+      console.log('Payload a enviar:', Object.fromEntries(params.entries()));
 
-    let ok = false, data = null;
-    if (res.type === 'opaque') {
-      ok = true;
-    } else if (res.ok) {
-      const ct = res.headers.get('content-type') || '';
-      if (ct.includes('application/json')) {
-        data = await res.json();
-        ok = data && data.status === 'ok';
-      } else {
-        const txt = await res.text();
-        ok = /\"status\"\\s*:\\s*\"ok\"/i.test(txt) || res.ok;
+      btn.disabled = true;
+      showStatus(out, 'Enviando…');
+
+      try {
+        const res = await fetch(SCRIPT_URL, {
+          method: 'POST',
+          mode: 'cors',
+          // No incluir credentials (cookies) en este caso
+          credentials: 'omit',
+          headers: {
+            // importante: application/x-www-form-urlencoded evita preflight en la mayoría de casos
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+          },
+          body: params.toString()
+        });
+
+        // Diagnóstico: si la respuesta es opaqua (mode/cors + CORS bloqueado) -> res.type === 'opaque'
+        if (res.type === 'opaque') {
+          // La petición pudo haber llegado al servidor pero la respuesta no es legible desde el navegador
+          showStatus(out, 'Petición enviada pero la respuesta es opaca. Revisá CORS y el despliegue del Web App.', 'err');
+          console.warn('Opaque response. Si usás Apps Script: asegurate de desplegar "Execute as: Me" y "Who has access: Anyone".');
+          return;
+        }
+
+        const ct = res.headers.get('content-type') || '';
+        let data = null;
+        if (ct.includes('application/json')) {
+          data = await res.json();
+        } else {
+          const txt = await res.text();
+          try { data = JSON.parse(txt); } catch (e) { data = { raw: txt }; }
+        }
+
+        // Manejo de respuesta esperada
+        if ((data && data.status === 'ok') || res.ok) {
+          showStatus(out, 'Inscripción registrada. ¡Gracias!', 'ok');
+          form.reset();
+        } else {
+          // Mensaje detallado para debugging
+          const msg = data?.message || data?.raw || `HTTP ${res.status} ${res.statusText}`;
+          console.error('Registro falló:', msg, data);
+          showStatus(out, 'Hubo un problema al registrar. ' + (msg ? msg : ''), 'err');
+        }
+
+      } catch (err) {
+        console.error('Fetch error:', err);
+        // Detectar errores relacionados a CORS (mensaje genérico en consola del navegador)
+        showStatus(out, 'Error de red o CORS. Revisá consola devtools y la configuración del Web App.', 'err');
+      } finally {
+        btn.disabled = false;
       }
-    }
 
-    if (ok) {
-      out.textContent = 'Inscripción registrada. ¡Gracias!';
-      out.className = 'status ok';
-      form.reset();
-    } else {
-      throw new Error(data?.message || 'Respuesta inesperada');
-    }
-  }catch(err){
-    console.error(err);
-    out.textContent = 'Hubo un problema al registrar. Intentá de nuevo.';
-    out.className = 'status err';
-  }finally{
-    btn.disabled = false;
+    });
+  } else {
+    // Si no hay formulario en la página, no hacemos nada pero avisamos en consola.
+    console.info('No se encontró #formInscripcion - formulario de inscripción inactivo en esta página.');
   }
-});
 
-
-
-
-
-
+})();
