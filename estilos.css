@@ -1,0 +1,234 @@
+body{
+    background-image: url(IMGs/fondo3.png);
+    background-size: 100% 100%;
+
+    margin:0
+}
+
+@font-face {
+    font-family: "Segoe UI";
+    src: url(FONTs/segoe-ui-variable/SegoeUIVF.ttf);
+}
+
+.userIcon{
+    width: 52.5vh;
+    height: 30vh;
+
+    display: block;
+    margin: auto;
+    margin-top: 17.5vh;
+}
+
+.userName{
+    color: white;
+    font-size: x-large;
+    font-family: Segoe UI;
+    text-align: center;
+}
+
+.passwordLabel{
+    display: block;
+    margin: auto;
+}
+
+.passwordInput{
+    background-color: rgba(0, 0, 0, 0.671);
+    
+}
+
+.miscFlex{
+    width: 25vh;
+    top: 5vh;
+    left: 5vh;
+    position: absolute;
+}
+
+.miscText{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    text-align: center;
+    font-size: 2vh;
+
+    margin-top: 4vh;
+}
+
+.extraText{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    text-align: center;
+    font-size: 2vh;
+
+    margin-top: 3.25vh;
+}
+
+.otherUsers{
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 5vh;
+}
+
+.miscUsers{
+    width: 14vh;
+    height: 7.5vh;
+
+    margin-top: 1vh;
+}
+
+.extraUsers{
+    display: flex;
+    flex-direction: row;
+}
+
+.miscImgs{
+    width: 2.5vh;
+    height: 2.25vh;
+}
+
+.miscClass{
+    display: block;
+    margin-left: 82.5%;
+    margin-top: 5vh;
+}
+
+label, input {
+    position: relative;
+    display: block;
+    padding-right: 76px;
+    width: 180px;
+    box-sizing: border-box;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 1vh;
+    border-color: rgba(94, 164, 255, 0.623);
+}
+
+input[type="text"] {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-left: 1.25vh;
+    color: white;
+}
+
+label::after {
+    content: '.' attr(data-domain);
+    position: absolute;
+    top: 4px;
+    left: 102px;
+    font-family: Segoe UI;
+    font-size: 12px;
+    display: block;
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: bold;
+}
+
+.hiddenIMG{
+    display: none;
+}
+
+.videoFile{
+    width: 10vh;
+    height: 10vh;
+
+    margin-top: 2.5%;
+    margin-left: 2.5%;
+}
+
+.recycleBin{
+    width: 7.5vh;
+    height: 8vh;
+
+    position: fixed;
+    bottom: 25;
+    right: 25;
+}
+
+.miscellaneousText{
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    margin-left: 2.35%;
+}
+
+.video{
+    position: absolute;
+    z-index: 5;
+    left:35%;
+    top: 30%;
+
+    display: none;
+}
+
+.carpeta{
+    z-index: 1;
+    position: absolute;
+    bottom: 2.5%;
+    left: 50%;
+    transform: translate(-50%, 107.5%);
+}
+
+.icono-videos{
+    width: 15vh;
+    z-index: 2;
+    position: relative;
+    display: inline;
+    margin-left: 67.5vh;
+    margin-top: 22.5vh;
+}
+
+.icono-videosMisc{
+    width: 15vh;
+    z-index: 2;
+    position: relative;
+    display: inline;
+    margin-left: 5vh;
+    margin-top: 22.5vh;
+}
+
+.posIgnore{
+    display: none;
+}
+
+.posRel{
+    position: relative;
+}
+
+.posColumn{
+    display: flex;
+    flex-direction: column;
+}
+
+.textoIconos{
+    z-index: 3;
+    margin-left: 67.5vh;
+    font-size: small;
+}
+
+.textoIconosMisc{
+    z-index: 3;
+    margin-left: 5vh;
+    font-size: small;
+}
+
+.closeBtn{
+    z-index: 4;
+    position: absolute;
+    left: 135.98vh;
+    top: 3.4vh;
+
+    padding-top: 1vh;
+    padding-left: 3vh;
+    padding-right: 3vh;
+    padding-bottom: 0.5vh;
+}
+
+.closeBtn:hover{
+    background-color: red;
+}
+
+.closeBtnVid{
+    height: 5vh;
+    width: 5vh;
+
+    top: -2.5vh;
+    position: absolute;
+}

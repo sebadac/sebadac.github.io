@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows 11</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <img src="IMGs/user.png" alt="Icono de Usuario" class="userIcon" id="toHide">
+    <p class="userName" id="toHide"> Administrador </p>
+
+    <label class="passwordLabel" id="toHide"> 
+        <input type="text" placeholder="PIN" class="passwordInput" id="PIN">
+    </label>
+
+    <p class="miscText" id="toHide"> Olvide mi contraseña </p>
+    <p class="miscText" id="toHide"> Opciones de Login</p>
+
+    <div class="otherUsers" id="toHide">
+        <div class="extraUsers">
+            <img src="IMGs/user.png" alt="" class="miscUsers">
+            <p class="extraText"> Administrador </p>
+        </div>
+        <div class="extraUsers">
+            <img src="IMGs/user.png" alt="" class="miscUsers">
+            <p class="extraText"> Otro usuario </p>
+
+            <div class="miscClass">
+                <img src="IMGs/wifi.png" alt="" class="miscImgs">
+                <img src="IMGs/silhoutte2.png" alt="" class="miscImgs">
+                <img src="IMGs/turnon.png" alt="" class="miscImgs">
+            </div>
+        </div>
+    </div>
+
+    <div class="hiddenIMG" id="toShow">
+        <div class="miscFlex">
+            <img src="IMGs/folder-icon.png" alt="" class="videoFile" onclick="showFolder()" type="button">
+            <p class="miscellaneousText" > NO TOCAR </p>
+        </div>
+
+        <div class="posIgnore" id="Carpeta">
+            <div class="posRel">
+                <img class="carpeta" src="IMGs/Carpeta.png" alt="">
+                <p class="closeBtn" onclick="closeFolder()" type="button" id="closeBtn"> X </p>
+            </div>
+            <div class="extraUsers">
+                <div class="posColumn">
+                    <img class="icono-videos" src="IMGs/file_video.png" alt="" onclick="showVideo(this.id)" type="button" id="vid1">
+                    <p class="textoIconos"> placeholder.mp4 </p>
+                </div>
+                <div class="posColumn">
+                    <img class="icono-videosMisc" src="IMGs/file_video.png" alt="" onclick="showVideo(this.id)" type="button" id="vid2">
+                    <p class="textoIconosMisc"> placeholder.mp4 </p>
+                </div>
+                <div class="posColumn">
+                    <img class="icono-videosMisc" src="IMGs/file_video.png" alt="" onclick="showVideo(this.id)" type="button" id="vid3">
+                    <p class="textoIconosMisc"> placeholder.mp4 </p>
+                </div>
+                <div class="posColumn">
+                    <img class="icono-videosMisc" src="IMGs/file_video.png" alt="" onclick="showVideo(this.id)" type="button" id="vid4">
+                    <p class="textoIconosMisc"> placeholder.mp4 </p>
+                </div>
+            </div>
+    
+            <div id="theVideo"  class="video" >
+                <video src="" width="500" height="300" controls id="videoActual"></video>
+                <img src="IMGs/Close.png" alt="" class="closeBtnVid" onclick="closeVideo()" type="button" id="closeBtnVid">
+            </div>
+        </div>
+
+        <img src="IMGs/bin.png" alt="" class="recycleBin" onclick="abrirRompecabezas()" style="cursor:pointer; width:48px; height:48px;">
+    </div>
+
+    <script src="node.js"></script>
+    <script src="script.js"></script>>
+</body>
+</html>

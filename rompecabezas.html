@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Rompecabezas con video al completar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<div class="game-container">
+  <!-- Contenedor del puzzle (placeholder). Aquí va el rompecabezas y el botón de fin. -->
+  <div id="puzzleContainer">
+    <!-- ... (aquí iría el rompecabezas en sí) ... -->
+    <div id="game">
+      <div id="puzzle"></div>
+      <img id="finishButton" src="./IMGs/file_video.png" alt="Ver video" style="display:none;">
+    </div>
+  </div>
+
+  <!-- Contenedor del video, inicialmente oculto -->
+  <div id="videoContainer">
+    <!-- Botón para cerrar el video -->
+    <span id="closeButton">✖</span>
+    <!-- Video con controles; no hay autoplay, queda pausado hasta clic de usuario -->
+    <video id="myVideo" controls>
+      <!-- Fuente del video; cámbiala según sea necesario -->
+      <source src="./VIDs/InShot_20251104_095227760.mp4" type="video/mp4">
+      <!-- Texto alternativo si no soporta <video> -->
+      Tu navegador no soporta el elemento <code>&lt;video&gt;</code>.
+    </video>
+  </div>
+</div>
+
+  <script src="node.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>

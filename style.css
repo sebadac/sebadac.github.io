@@ -1,0 +1,106 @@
+/* Contenedor principal: tablero y botón */
+#game {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px;
+  }
+  
+  /* Contenedor del rompecabezas */
+  #puzzle {
+    position: relative;
+    border: 1px solid #333;
+  }
+  
+  /* Estilo común de cada pieza */
+  .piece {
+    position: absolute;
+    cursor: grab;
+    user-select: none;
+  }
+  
+  /* Pieza bloqueada: sin puntero de arrastre */
+  .piece.locked {
+    cursor: default;
+  }
+  
+  /* Botón sin texto (oculto inicialmente) */
+  /* #finishButton {
+    display: none;
+    margin-left: 20px;
+    width: 80px;
+    height: 80px; */
+    /* Para hacerlo visible, le damos un fondo */
+    /* background-color: #4CAF50;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  } */
+  
+
+
+
+
+
+
+    /* Contenedor flexible para puzzle y video lado a lado */
+    .game-container {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    /* Contenedor de video oculto inicialmente */
+    #videoContainer {
+      display: none; /* Oculto hasta que se presione el botón */
+      position: relative;
+      width: 640px;  /* Ajusta tamaño según necesidad */
+      background: #000; /* Fondo negro opcional para video */
+    }
+    /* Botón "X" para cerrar */
+    #closeButton {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      cursor: pointer;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      z-index: 1;
+    }
+    /* El propio video ocupará todo el ancho del contenedor */
+    #myVideo {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    /* Ejemplo de estilo para el botón de finalizar (verde) */
+    /* #finishButton {
+      padding: 10px 20px;
+      background: green;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+ */
+
+
+
+
+ #finishButton {
+  display: none;           /* oculto hasta que se desbloquee */
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  margin-left: 20px;
+  border-radius: 10px;     /* opcional: bordes redondeados */
+  transition: transform 0.2s ease;
+}
+
+#finishButton:hover {
+  transform: scale(1.05);  /* pequeño efecto al pasar el mouse */
+}
+
+
+
+
+
