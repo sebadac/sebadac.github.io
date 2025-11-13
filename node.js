@@ -8,7 +8,7 @@ let Folder = document.getElementById("Carpeta")
 
 function showVideo(clicked_id){
     if (clicked_id === "vid1") {
-        VideoActual.setAttribute("src" , "https://youtu.be/Y0U3_jalQyE?si=G0XjL1mzYwSiFScS")
+        VideoActual.setAttribute("src" , "VIDs/FIGURAS.mp4")
     } else if (clicked_id === "vid2") {
         VideoActual.setAttribute("src", "VIDs/blu.mp4")
     } else if (clicked_id === "vid3") {
