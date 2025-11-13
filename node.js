@@ -27,7 +27,7 @@ function showFolder(){
 Input.addEventListener("keyup", function(event) {
     if (event.keyCode === 13) {
         console.log(event.target.value)
-        if (event.target.value === "1234"){
+        if (event.target.value === "2161"){
             for(var i = 0; i < elms.length; i++) 
             elms[i].style.display='none';
         
@@ -95,4 +95,5 @@ function abrirRompecabezas() {
     }
 
 }
+
 
