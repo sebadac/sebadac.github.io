@@ -8,7 +8,7 @@ let Folder = document.getElementById("Carpeta")
 
 function showVideo(clicked_id){
     if (clicked_id === "vid1") {
-        VideoActual.setAttribute("src" , "VIDs/rickroll.mp4")
+        VideoActual.setAttribute("src" , "www.youtube.com/watch?v=Y0U3_jalQyE&feature=youtu.be")
     } else if (clicked_id === "vid2") {
         VideoActual.setAttribute("src", "VIDs/blu.mp4")
     } else if (clicked_id === "vid3") {
@@ -93,4 +93,5 @@ function abrirRompecabezas() {
     } else {
         win.focus();
     }
+
 }
