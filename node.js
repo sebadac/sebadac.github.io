@@ -8,7 +8,7 @@ let Folder = document.getElementById("Carpeta")
 
 function showVideo(clicked_id){
     if (clicked_id === "vid1") {
-        VideoActual.setAttribute("src" , "www.youtube.com/watch?v=Y0U3_jalQyE&feature=youtu.be")
+        VideoActual.setAttribute("src" , "https://youtu.be/Y0U3_jalQyE?si=G0XjL1mzYwSiFScS")
     } else if (clicked_id === "vid2") {
         VideoActual.setAttribute("src", "VIDs/blu.mp4")
     } else if (clicked_id === "vid3") {
@@ -95,3 +95,4 @@ function abrirRompecabezas() {
     }
 
 }
+
